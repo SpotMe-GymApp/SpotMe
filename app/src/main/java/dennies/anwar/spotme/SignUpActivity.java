@@ -67,33 +67,42 @@ public class SignUpActivity extends AppCompatActivity {
         });
     }
 
+
+
     private void createNewUser(String username, String password, String confirm_password) {
         ParseUser user = new ParseUser();
         // Set the user's username and password, which can be obtained by a forms
         user.setUsername(username);
         user.setPassword(password);
-        if (password != confirm_password){
+        if (password == password){
             Toast.makeText(SignUpActivity.this, "Passwords have to match", Toast.LENGTH_SHORT).show();
+            user.signUpInBackground(new SignUpCallback() {
+                @Override
+                public void done(ParseException e) {
+                    if (e == null) {
+                        Toast.makeText(SignUpActivity.this, "Welcome" + username + "1", Toast.LENGTH_SHORT).show();
+                        goMainActivity();
+                    } else {
+                        ParseUser.logOut();
+                        Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
+                    }
+                }
+            });
+        }
+        else {
             return;
         }
-        user.signUpInBackground(new SignUpCallback() {
-            @Override
-            public void done(ParseException e) {
-                if (e == null) {
-                    Toast.makeText(SignUpActivity.this, "Welcome" + username + "1", Toast.LENGTH_SHORT).show();
-                } else {
-                    ParseUser.logOut();
-                    Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                }
-            }
-        });
+
 
     }
 
-
-
     private void goLoginActivity() {
         Intent i = new Intent(this, LoginActivity.class);
+        startActivity(i);
+    }
+
+    private void goMainActivity() {
+        Intent i = new Intent(this, MainActivity.class);
         startActivity(i);
     }
 
