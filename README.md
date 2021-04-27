@@ -75,7 +75,7 @@ A social app where it allows users to connect with other fitness enthusiast to w
 
 ## Wireframes
 
-<img src="SpotMe.pdf" width=600>
+<img src="./SpotMe.pdf" width=600>
 
 
 ## Schema 
