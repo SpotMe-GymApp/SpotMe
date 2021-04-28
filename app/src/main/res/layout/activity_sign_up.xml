@@ -23,11 +23,11 @@
         android:id="@+id/etUsername"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tvUsername"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="262dp"
+        android:layout_marginStart="99dp"
+        android:layout_marginTop="13dp"
         android:ems="10"
         android:inputType="textPersonName" />
 
@@ -35,21 +35,21 @@
         android:id="@+id/tvPassword"
         android:layout_width="86dp"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/etUsername"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginStart="101dp"
-        android:layout_marginTop="327dp"
+        android:layout_marginStart="97dp"
+        android:layout_marginTop="20dp"
         android:text="Password" />
 
     <EditText
         android:id="@+id/etPassword"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_below="@+id/tvPassword"
         android:layout_alignParentStart="true"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginStart="100dp"
-        android:layout_marginTop="354dp"
+        android:layout_marginStart="98dp"
+        android:layout_marginTop="16dp"
         android:ems="10"
         android:inputType="textPassword" />
 
@@ -57,26 +57,30 @@
         android:id="@+id/btnLogin"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/tvQuestion"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="201dp"
+        android:layout_marginTop="22dp"
         android:text="Login" />
 
     <TextView
         android:id="@+id/tvQuestion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/btnSignUp"
+        android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="248dp"
+        android:layout_marginStart="122dp"
+        android:layout_marginTop="23dp"
         android:text="Already have an account?" />
 
     <Button
         android:id="@+id/btnSignUp"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignParentBottom="true"
+        android:layout_below="@+id/etPassword"
+        android:layout_alignParentStart="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="275dp"
+        android:layout_marginStart="156dp"
+        android:layout_marginTop="9dp"
         android:text="Sign Up" />
 </RelativeLayout>
