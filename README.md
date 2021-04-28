@@ -73,6 +73,10 @@ A social app where it allows users to connect with other fitness enthusiast to w
 * Profile 
     * User can access posts
 
+### App Walkthough GIF
+
+<img src="Walkthrough.gif" ><br>
+
 ## Wireframes
 
 <img src="SpotMe.pdf" width=600>
