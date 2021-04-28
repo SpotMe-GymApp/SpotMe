@@ -63,10 +63,15 @@ public class SignUpActivity extends AppCompatActivity {
                     return;
                 }
                 createNewUser(username, password);
+
             }
         });
     }
 
+    private void goEditProfileActivity() {
+        Intent i = new Intent(this, EditProfileActivity.class);
+        startActivity(i);
+    }
 
 
     private void createNewUser(String username, String password) {
@@ -79,12 +84,14 @@ public class SignUpActivity extends AppCompatActivity {
             public void done(ParseException e) {
                 if (e == null) {
                     showAlert("Successful Sign Up!", "Welcome " + username +" !");
+                    goEditProfileActivity();
                 } else {
                     ParseUser.logOut();
                     Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
             }
         });
+
     }
 
     private void showAlert(String title,String message){
