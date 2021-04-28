@@ -22,7 +22,6 @@ public class SignUpActivity extends AppCompatActivity {
     public static final String TAG = "SignUp Activity";
     private EditText etUsername;
     private EditText etPassword;
-    private EditText etConfirmPassword;
     private Button btnLogin;
     private Button btnSignUp;
 
