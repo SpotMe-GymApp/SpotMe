@@ -25,17 +25,17 @@ A social app where it allows users to connect with other fitness enthusiast to w
 
 **Required Must-have Stories**
 
-[x] User can create a new account
-[] User can input personal records and have personalization
-[x] User can login
-[] User can see other user profiles
-[] User can post pictures or videos
+- [x] User can create a new account
+- [x] User can login
+- [ ] User can input personal records and have personalization
+- [ ] User can see other user profiles
+- [ ] User can post pictures or videos
 
 **Optional Nice-to-have Stories**
 
-[] Users can see users close to them on the embedded map
-[] Users can follow and subscribe to users
-[] Gamify app to where users achieve badges after certain completion
+- [ ] Users can see users close to them on the embedded map
+- [ ] Users can follow and subscribe to users
+- [ ] Gamify app to where users achieve badges after certain completion
 
 ### 2. Screen Archetypes
 
