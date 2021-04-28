@@ -25,7 +25,7 @@ A social app where it allows users to connect with other fitness enthusiast to w
 
 **Required Must-have Stories**
 
-[] User can create a new account
+[x] User can create a new account
 [] User can input personal records and have personalization
 [x] User can login
 [] User can see other user profiles
