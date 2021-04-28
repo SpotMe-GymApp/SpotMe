@@ -35,7 +35,7 @@ public class SignUpActivity extends AppCompatActivity {
 
         etUsername = findViewById(R.id.etUsername);
         etPassword = findViewById(R.id.etPassword);
-        etConfirmPassword = findViewById(R.id.etConfirmPassword);
+
         btnLogin = findViewById(R.id.btnLogin);
         btnSignUp = findViewById(R.id.btnSignUp);
 
@@ -53,7 +53,7 @@ public class SignUpActivity extends AppCompatActivity {
                 Log.i(TAG, "onClick Sign Up Button");
                 String username = etUsername.getText().toString();
                 String password = etPassword.getText().toString();
-                String confirm_password = etConfirmPassword.getText().toString();
+
                 if (username.isEmpty()) {
                     Toast.makeText(SignUpActivity.this, "Username can't be empty", Toast.LENGTH_SHORT);
                     return;
@@ -62,38 +62,47 @@ public class SignUpActivity extends AppCompatActivity {
                     Toast.makeText(SignUpActivity.this, "Username can't be empty", Toast.LENGTH_SHORT);
                     return;
                 }
-                createNewUser(username, password, confirm_password);
+                createNewUser(username, password);
             }
         });
     }
 
 
 
-    private void createNewUser(String username, String password, String confirm_password) {
+    private void createNewUser(String username, String password) {
         ParseUser user = new ParseUser();
         // Set the user's username and password, which can be obtained by a forms
         user.setUsername(username);
         user.setPassword(password);
-        if (password == password){
-            Toast.makeText(SignUpActivity.this, "Passwords have to match", Toast.LENGTH_SHORT).show();
-            user.signUpInBackground(new SignUpCallback() {
-                @Override
-                public void done(ParseException e) {
-                    if (e == null) {
-                        Toast.makeText(SignUpActivity.this, "Welcome" + username + "1", Toast.LENGTH_SHORT).show();
-                        goMainActivity();
-                    } else {
-                        ParseUser.logOut();
-                        Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
-                    }
+        user.signUpInBackground(new SignUpCallback() {
+            @Override
+            public void done(ParseException e) {
+                if (e == null) {
+                    showAlert("Successful Sign Up!", "Welcome " + username +" !");
+                } else {
+                    ParseUser.logOut();
+                    Toast.makeText(SignUpActivity.this, e.getMessage(), Toast.LENGTH_LONG).show();
                 }
-            });
-        }
-        else {
-            return;
-        }
+            }
+        });
+    }
 
-
+    private void showAlert(String title,String message){
+        AlertDialog.Builder builder = new AlertDialog.Builder(SignUpActivity.this)
+                .setTitle(title)
+                .setMessage(message)
+                .setPositiveButton("OK", new DialogInterface.OnClickListener() {
+                    @Override
+                    public void onClick(DialogInterface dialog, int which) {
+                        dialog.cancel();
+                        // don't forget to change the line below with the names of your Activities
+                        Intent intent = new Intent(SignUpActivity.this, MainActivity.class);
+                        intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TASK | Intent.FLAG_ACTIVITY_NEW_TASK);
+                        startActivity(intent);
+                    }
+                });
+        AlertDialog ok = builder.create();
+        ok.show();
     }
 
     private void goLoginActivity() {
