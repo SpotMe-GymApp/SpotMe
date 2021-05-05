@@ -7,6 +7,8 @@ import java.io.IOException;
 import org.codehaus.jackson.JsonParseException;
 import org.codehaus.jackson.map.JsonMappingException;
 import org.codehaus.jackson.map.ObjectMapper;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 /*
  * Java program to convert JSON String into Java object using Jackson library.
@@ -15,55 +17,48 @@ import org.codehaus.jackson.map.ObjectMapper;
  *
  * @author http://javarevisited.blogspot.com
  */
+import java.util.HashMap; // import the HashMap class
+import java.util.Iterator;
+
 public class JsonToJavaConverter {
 
-    public static void main(String args[]) throws JsonParseException
-            , JsonMappingException, IOException{
+    private static HashMap<String, String> map;
+    private static String jString;
 
-        JsonToJavaConverter converter = new JsonToJavaConverter();
+     public JsonToJavaConverter(String jsonString) throws JSONException {
+        map = new HashMap<String, String>();
+        jString = jsonString;
 
-        String json = "{\n" +
-                "    \"name\": \"Garima\",\n" +
-                "    \"surname\": \"Joshi\",\n" +
-                "    \"phone\": 9832734651}";
+         JSONObject jObject = new JSONObject(jsonString);
+         Iterator<?> keys = jObject.keys();
 
-        //converting JSON String to Java object
-        converter.fromJson(json);
+         while( keys.hasNext() ){
+             String key = (String)keys.next();
+             String value = jObject.getString(key);
+             map.put(key, value);
+
+         }
+
+         System.out.println("json : "+jObject);
+         System.out.println("map : "+map);
     }
 
-
-    public Object fromJson(String json) throws JsonParseException
-            , JsonMappingException, IOException{
-        User garima = new ObjectMapper().readValue(json, User.class);
-        Log.i("JsonToJava", "Java Object created from JSON String ");
-        Log.i("JsonToJava", "JSON String : " + json);
-        Log.i("JsonToJava", "Java Object : " + garima);
-
-        return garima;
+    HashMap<String, String> getStats(){
+         return map;
     }
 
+    String getJString(){
+         return jString;
+    }
 
-    public static class User{
-        private String name;
-        private String surname;
-        private long phone;
+    void addAchievement(String name, String record) {
+        map.put(name, record);
+        jString = addAchievementToJsonString(name, record);
+    }
 
-        public String getName() {return name;}
-        public void setName(String name) {this.name = name;}
-
-        public String getSurname() {return surname;}
-        public void setSurname(String surname) {this.surname = surname;}
-
-        public long getPhone() {return phone;}
-        public void setPhone(long phone) {this.phone = phone;}
-
-        @Override
-        public String toString() {
-            return "User [name=" + name + ", surname=" + surname + ", phone="
-                    + phone + "]";
-        }
-
-
+    String addAchievementToJsonString(String name, String record){
+         String newJsonString = jString.substring(0, jString.length() - 1) + ",\"" + name + "\"" + ":" + "\"" + record + "\"";
+         return newJsonString;
     }
 }
 

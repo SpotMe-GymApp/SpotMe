@@ -47,8 +47,6 @@ public class EditProfileActivity extends AppCompatActivity {
                 Integer bench = Integer.parseInt(String.valueOf(etBench.getText()));
                 Integer squat = Integer.parseInt(String.valueOf(etSquat.getText()));
                 Integer deadlift = Integer.parseInt(String.valueOf(etDeadlift.getText()));
-
-                
             }
         });
     }
