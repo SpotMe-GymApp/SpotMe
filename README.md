@@ -27,9 +27,9 @@ A social app where it allows users to connect with other fitness enthusiast to w
 
 - [x] User can create a new account
 - [x] User can login
-- [ ] User can input personal records and have personalization
+- [x] User can input personal records and have personalization
 - [ ] User can see other user profiles
-- [ ] User can post pictures or videos
+- [x] User can post pictures or videos - Buggy 
 
 **Optional Nice-to-have Stories**
 
